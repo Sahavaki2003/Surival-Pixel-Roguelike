@@ -5,16 +5,9 @@ public class Enemy : AbsCharacter, IDamageable
 {
     [SerializeField] private GameObject enemy;
     [SerializeField] private float initialHp = 100f;
-    [SerializeField] private float Speed = 3f;
     void Awake()
     {
-        //enemyPrefab = enemy;
         Hp = initialHp;
-        speed = Speed;
-    }
-    protected override void OnEnable()
-    {
-        base.OnEnable();
     }
     protected override void Attack()
     {

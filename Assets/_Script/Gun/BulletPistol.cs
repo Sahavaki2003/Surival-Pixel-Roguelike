@@ -10,7 +10,7 @@ public class BulletPistol : AbsWeapon, IGun
     }
     public void Shoot()
     {
-        //Logic bắn
+        //
     }
     protected void OnTriggerEnter2D(Collider2D other)
     {
