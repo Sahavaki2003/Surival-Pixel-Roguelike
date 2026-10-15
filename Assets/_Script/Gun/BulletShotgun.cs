@@ -1,16 +1,12 @@
 using System;
 using UnityEngine;
 
-public class BulletShotgun : AbsWeapon, IGun
+public class BulletShotgun : AbsWeapon
 {    
     [SerializeField] private WeaponData data;
     void Awake()
     {
         this.Damage = data.Damage;
-    }
-    public void Shoot()
-    {
-        //Logic bắn
     }
     protected void OnTriggerEnter2D(Collider2D other)
     {

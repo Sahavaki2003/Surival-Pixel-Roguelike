@@ -73,15 +73,15 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: def6839459cd4ed49aacab3bb1cdb470, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 5fe1260bb32b0bd489aa6b609b1a2a57, type: 2}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 0.2, y: 0.2}
+  m_Size: {x: 0.4375, y: 0.4375}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &3350920806404617378
@@ -95,6 +95,7 @@ GameObject:
   - component: {fileID: 2313829706123507727}
   - component: {fileID: 6949503566178513764}
   - component: {fileID: 2396225427209351923}
+  - component: {fileID: -1890500872418679023}
   m_Layer: 0
   m_Name: BulletPistol
   m_TagString: Untagged
@@ -131,6 +132,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   data: {fileID: 11400000, guid: 37cd922cfa9ec664eae8b7e4a74d4200, type: 2}
+  Bullet: {fileID: 3350920806404617378}
+  firePoint: {fileID: 0}
+  bulletSpeed: 10
 --- !u!61 &2396225427209351923
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -176,3 +180,30 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.03, y: 0.03}
   m_EdgeRadius: 0
+--- !u!50 &-1890500872418679023
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3350920806404617378}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0

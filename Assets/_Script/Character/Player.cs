@@ -14,7 +14,6 @@ public class Player : MonoBehaviour, IDamageable
             Debug.Log("Player đã nhặt súng");
             IEquipable LoodGun = other.GetComponent<IEquipable>();
             LoodGun.Equip(weaponHolder);
-
         }
     }
     public void TakeDamage(float damage)

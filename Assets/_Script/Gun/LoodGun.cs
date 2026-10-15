@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class LoodGun : MonoBehaviour, IEquipable
 {
-    [SerializeField] private GameObject Bullet;
     [SerializeField] private Rigidbody2D rb;
+    //[SerializeField] private GameObject Bullet;
     void Awake()
     {
         this.rb = GetComponent<Rigidbody2D>();
@@ -21,7 +21,6 @@ public class LoodGun : MonoBehaviour, IEquipable
         transform.localPosition = Vector3.zero;
         transform.localRotation = Quaternion.identity;
         rb.simulated = false;
-        Bullet.SetActive(true);
         Debug.Log(rb.simulated + "đã tắt rigibody");
     }
     public void Unequip()
@@ -29,7 +28,6 @@ public class LoodGun : MonoBehaviour, IEquipable
         if (Input.GetKey(KeyCode.R))
         {
             transform.SetParent(null);
-            Bullet.SetActive(false);
             rb.simulated = true;
             Debug.Log(rb.simulated + "đã tắt rigibody");
         }
