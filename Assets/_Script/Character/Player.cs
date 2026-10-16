@@ -30,6 +30,6 @@ public class Player : MonoBehaviour, IDamageable
     private void OnDie()
     {
         PlayerDie?.Invoke();
-        Debug.Log("player thông báo đã chết");
+        Debug.Log("player thông báo đã chếtok");
     }
 }
