@@ -42,12 +42,4 @@ public class NavMeshEnemy : MonoBehaviour
     {
         Debug.Log("quai thực hiên tấn công và truyền dame");
     }
-
-
-
-
-
-
-
-
 }

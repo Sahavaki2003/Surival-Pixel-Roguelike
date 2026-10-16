@@ -15,6 +15,7 @@ public class BulletPistol : AbsWeapon
             Debug.Log("Player hoặc enemy đã Va chạm");
             IDamageable damageable = other.GetComponent<IDamageable>();
             damageable.TakeDamage(Damage);
+            gameObject.SetActive(false);
         }
     }
 }
