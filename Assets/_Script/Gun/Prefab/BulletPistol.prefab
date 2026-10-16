@@ -95,7 +95,7 @@ GameObject:
   - component: {fileID: 2313829706123507727}
   - component: {fileID: 6949503566178513764}
   - component: {fileID: 2396225427209351923}
-  - component: {fileID: -1890500872418679023}
+  - component: {fileID: 9040941362782205440}
   m_Layer: 0
   m_Name: BulletPistol
   m_TagString: Untagged
@@ -132,9 +132,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   data: {fileID: 11400000, guid: 37cd922cfa9ec664eae8b7e4a74d4200, type: 2}
-  Bullet: {fileID: 3350920806404617378}
-  firePoint: {fileID: 0}
-  bulletSpeed: 10
 --- !u!61 &2396225427209351923
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -180,7 +177,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.03, y: 0.03}
   m_EdgeRadius: 0
---- !u!50 &-1890500872418679023
+--- !u!50 &9040941362782205440
 Rigidbody2D:
   serializedVersion: 4
   m_ObjectHideFlags: 0
