@@ -6,16 +6,30 @@ public class Player : MonoBehaviour, IDamageable
 {
     [SerializeField] private Transform weaponHolder;
     [SerializeField] private float initialHp = 100f;
+    private bool hasGun = false;
+    private IEquipable loodGun;
     public static event Action PlayerDie;
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if(other.GetComponent<IEquipable>() != null)
+        if(other.GetComponent<IEquipable>() != null && !hasGun)
         {
+            hasGun = true;
             Debug.Log("Player đã nhặt súng");
-            IEquipable LoodGun = other.GetComponent<IEquipable>();
-            LoodGun.Equip(weaponHolder);
+            loodGun = other.GetComponent<IEquipable>();
+            loodGun.Equip(weaponHolder);
         }
     }
+
+    private void Update()
+    {
+        if (Input.GetKey(KeyCode.R) && hasGun)
+        {
+            loodGun.Unequip();
+            hasGun = false;
+            Debug.Log("Player đã bỏ súng");
+        }
+    }
+
     public void TakeDamage(float damage)
     {
         initialHp -= damage;

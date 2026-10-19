@@ -11,10 +11,6 @@ public class LoodGun : MonoBehaviour, IEquipable
         this.rb = GetComponent<Rigidbody2D>();
         Bullet.SetActive(false);
     }
-    void Update()
-    {
-        this.Unequip();
-    }
     public void Equip(Transform weaponHolder)
     {   
         transform.SetParent(weaponHolder);
@@ -25,14 +21,12 @@ public class LoodGun : MonoBehaviour, IEquipable
         Debug.Log(rb.simulated + "đã tắt rigibody");
         Bullet.SetActive(true);
     }
+
     public void Unequip()
     {
-        if (Input.GetKey(KeyCode.R))
-        {
-            transform.SetParent(null);
-            rb.simulated = true;
-            Debug.Log(rb.simulated + "đã tắt rigibody");
-            Bullet.SetActive(false);
-        }
+        transform.SetParent(null);
+        rb.simulated = true;
+        Debug.Log(rb.simulated + "đã tắt rigibody");
+        Bullet.SetActive(false);
     }
 }
