@@ -5,28 +5,29 @@ using UnityEngine;
 public class LoodGun : MonoBehaviour, IEquipable
 {
     [SerializeField] private Rigidbody2D rb;
-    [SerializeField] private GameObject Bullet;
+    [SerializeField] private GameObject FirePoint;
     void Awake()
     {
         this.rb = GetComponent<Rigidbody2D>();
-        Bullet.SetActive(false);
     }
     public void Equip(Transform weaponHolder)
     {   
+        FirePoint.SetActive(true);
+        
         transform.SetParent(weaponHolder);
 
         transform.localPosition = Vector3.zero;
         transform.localRotation = Quaternion.identity;
         rb.simulated = false;
         Debug.Log(rb.simulated + "đã tắt rigibody");
-        Bullet.SetActive(true);
     }
 
     public void Unequip()
     {
+        FirePoint.SetActive(false);
+
         transform.SetParent(null);
         rb.simulated = true;
         Debug.Log(rb.simulated + "đã tắt rigibody");
-        Bullet.SetActive(false);
     }
 }

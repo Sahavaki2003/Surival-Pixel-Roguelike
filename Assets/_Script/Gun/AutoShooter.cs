@@ -12,9 +12,19 @@ public class AutoShooter : MonoBehaviour
     [SerializeField] private float bulletSpeed = 10f;
 
     private Coroutine shootingCoroutine;
-    private void Start()
+
+    private void OnEnable()
     {
         shootingCoroutine = StartCoroutine(ShootRoutine());
+    }
+
+    private void OnDisable()
+    {
+        if (shootingCoroutine != null)
+        {
+            StopCoroutine(shootingCoroutine);
+            shootingCoroutine = null;
+        }
     }
 
     private IEnumerator ShootRoutine()
@@ -22,7 +32,6 @@ public class AutoShooter : MonoBehaviour
         while (true)
         {
             SpawnBullet();
-
             yield return new WaitForSeconds(fireRate);
         }
     }
@@ -32,16 +41,17 @@ public class AutoShooter : MonoBehaviour
         if (bulletPrefab == null || firePoint == null)
             return;
 
-        GameObject bullet = Instantiate(bulletPrefab,
+        GameObject bullet = Instantiate(
+            bulletPrefab,
             firePoint.position,
             firePoint.rotation
         );
 
-        Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
+        Rigidbody2D bulletRb = bullet.GetComponent<Rigidbody2D>();
 
-        if (rb != null)
+        if (bulletRb != null)
         {
-            rb.velocity = firePoint.right * bulletSpeed;
+            bulletRb.velocity = firePoint.right * bulletSpeed;
         }
     }
 }
