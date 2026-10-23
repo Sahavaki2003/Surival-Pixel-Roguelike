@@ -1,54 +1,121 @@
-using System;
+
 using UnityEngine;
 
 public class Enemy : AbsCharacter, IDamageable
 {
-    [SerializeField] private GameObject enemy;
+    [Header("Health")]
     [SerializeField] private float initialHp = 100f;
-    [SerializeField] private Rigidbody2D rb;
+
+    [Header("Attack Settings")]
     [SerializeField] private GameObject FirePoint;
-    void Awake()
+    [SerializeField] private Transform Target;
+    [SerializeField] private float actionDistance = 2f;
+
+    private bool isAttacking;
+    private bool isDead;
+
+    private void Awake()
     {
-        this.rb = GetComponent<Rigidbody2D>();
         Hp = initialHp;
     }
-    void OnEnable()
+
+    private void OnEnable()
     {
-        NavMeshEnemy.Attack += Attack;
-        NavMeshEnemy.NoAttack += NoAttack;
+        GameObject playerObj = GameObject.Find("Player");
+
+        if (playerObj != null)
+        {
+            Target = playerObj.transform;
+        }
     }
-    private void OnDestroy()
+
+    private void Start()
     {
-        NavMeshEnemy.Attack -= Attack;
-        NavMeshEnemy.NoAttack -= NoAttack;
-        Destroy(gameObject, 4f);
+        if (FirePoint != null)
+        {
+            FirePoint.SetActive(false);
+        }
     }
+
+    private void Update()
+    {
+        if (Target == null || isDead)
+            return;
+
+        GetDistance();
+    }
+
+    private void GetDistance()
+    {
+        float distance = Vector2.Distance(transform.position,Target.position);
+
+        bool shouldAttack = distance <= actionDistance;
+
+        // Chỉ xử lý khi trạng thái thay đổi
+        if (shouldAttack == isAttacking)
+            return;
+
+        isAttacking = shouldAttack;
+
+        if (isAttacking)
+        {
+            Attack();
+        }
+        else
+        {
+            NoAttack();
+        }
+    }
+
     protected override void Attack()
     {
-        FirePoint.SetActive(true);
-        Debug.Log("enemy dang tan cong");
+        if (FirePoint != null)
+            FirePoint.SetActive(true);
+
+        Debug.Log("Enemy đang tấn công");
     }
 
     protected override void NoAttack()
     {
-        FirePoint.SetActive(false);
-        Debug.Log("enemy dang di chuyen den player");   
+        if (FirePoint != null)
+            FirePoint.SetActive(false);
+
+        Debug.Log("Enemy đang di chuyển đến Player");
     }
+
     public void TakeDamage(float damage)
     {
+        if (isDead)return;
+
         Hp -= damage;
-        initialHp = Hp;
+
         if (Hp <= 0)
         {
             Hp = 0;
-            initialHp = 0;
-            Debug.Log("Enemy đã chết");
-            this.OnDie();
-            this.OnDestroy();
+            OnDie();
         }
     }
+
     protected override void OnDie()
     {
+        if (isDead)
+            return;
+
+        isDead = true;
+
+        if (FirePoint != null)
+            FirePoint.SetActive(false);
+
         base.OnDie();
+
+        EnemyWaveMember waveMember =
+            GetComponent<EnemyWaveMember>();
+
+        if (waveMember != null)
+        {
+            waveMember.ReportDeath();
+        }
+
+        Destroy(gameObject, 2f);
     }
 }
