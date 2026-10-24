@@ -9,6 +9,6 @@ public abstract class AbsCharacter: MonoBehaviour
     protected virtual void OnDie()
     {
         EnemyDie?.Invoke();
-        Debug.Log("player thông báo đã chết, hoặc enemy đã chết");
+        Debug.Log("enemy đã chết");
     }
 }

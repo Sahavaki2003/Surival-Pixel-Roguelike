@@ -109,8 +109,7 @@ public class Enemy : AbsCharacter, IDamageable, ITeamMember
 
         base.OnDie();
 
-        EnemyWaveMember waveMember =
-            GetComponent<EnemyWaveMember>();
+        EnemyWaveMember waveMember = GetComponent<EnemyWaveMember>();
 
         if (waveMember != null)
         {

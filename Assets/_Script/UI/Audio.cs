@@ -7,12 +7,12 @@ public class Audio : MonoBehaviour
     void OnEnable()
     {
         Player.PlayerDie += ShowAudioGameOver;
-        Enemy.EnemyDie += ShowAudioGameOver;
+        //Enemy.EnemyDie += ShowAudioGameOver;
     }
     private void OnDestroy()
     {
         Player.PlayerDie -= ShowAudioGameOver;
-        Enemy.EnemyDie -= ShowAudioGameOver;
+        //Enemy.EnemyDie -= ShowAudioGameOver;
     }
     private void ShowAudioGameOver()
     {
