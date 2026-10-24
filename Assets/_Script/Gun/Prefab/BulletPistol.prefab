@@ -131,6 +131,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: deb3ccbd48338254ebe28f8a86cc80bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ownerTeam: 1
   data: {fileID: 11400000, guid: 37cd922cfa9ec664eae8b7e4a74d4200, type: 2}
 --- !u!50 &9040941362782205440
 Rigidbody2D:

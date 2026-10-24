@@ -2,10 +2,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
-public class Player : MonoBehaviour, IDamageable
+public class Player : MonoBehaviour, IDamageable, ITeamMember
 {
-    [SerializeField] private Transform weaponHolder;
+    [Header("Health")]
     [SerializeField] private float initialHp = 100f;
+    public TeamType Team => TeamType.Player;
+    [Header("Settings")]
+    [SerializeField] private Transform weaponHolder;
     private bool hasGun = false;
     private IEquipable loodGun;
     public static event Action PlayerDie;

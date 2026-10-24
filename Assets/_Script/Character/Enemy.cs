@@ -1,11 +1,12 @@
 
 using UnityEngine;
 
-public class Enemy : AbsCharacter, IDamageable
+public class Enemy : AbsCharacter, IDamageable, ITeamMember
 {
     [Header("Health")]
     [SerializeField] private float initialHp = 100f;
-
+    public TeamType Team => TeamType.Enemy;
+    
     [Header("Attack Settings")]
     [SerializeField] private GameObject FirePoint;
     [SerializeField] private Transform Target;
