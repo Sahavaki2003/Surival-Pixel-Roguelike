@@ -3338,8 +3338,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 376f312a5f7e4994d963c20869b6ed6b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weaponHolder: {fileID: 586330998}
   initialHp: 100
+  weaponHolder: {fileID: 586330998}
 --- !u!70 &1663828904
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -3416,6 +3416,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 5
   variableJoystick: {fileID: 1119377651}
+  characterVisual: {fileID: 388518757}
 --- !u!1 &1725774567
 GameObject:
   m_ObjectHideFlags: 0
