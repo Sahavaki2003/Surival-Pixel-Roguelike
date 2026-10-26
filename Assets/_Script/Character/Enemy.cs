@@ -1,4 +1,4 @@
-
+using System;
 using UnityEngine;
 
 public class Enemy : AbsCharacter, IDamageable, ITeamMember
@@ -8,10 +8,11 @@ public class Enemy : AbsCharacter, IDamageable, ITeamMember
     public TeamType Team => TeamType.Enemy;
     
     [Header("Attack Settings")]
+    [SerializeField] private HealthBar healthBar;
     [SerializeField] private GameObject FirePoint;
     [SerializeField] private Transform Target;
     [SerializeField] private float actionDistance = 2f;
-
+    public static event Action EnemyDie;
     private bool isAttacking;
     private bool isDead;
 
@@ -89,25 +90,36 @@ public class Enemy : AbsCharacter, IDamageable, ITeamMember
         if (isDead)return;
 
         Hp -= damage;
+        Hp = Mathf.Clamp(Hp, 0f, initialHp);
 
+        Debug.Log("Player HP: " + Hp);
+
+        // Cập nhật thanh máu
+        if (healthBar != null)
+        {
+            healthBar.UpdateHealthBar(Hp, initialHp);
+        }
+        else
+        {
+            Debug.LogError("Chưa gán HealthBar trong Inspector!");
+        }
         if (Hp <= 0)
         {
             Hp = 0;
-            OnDie();
+            this.OnDie();
         }
     }
 
     protected override void OnDie()
     {
-        if (isDead)
-            return;
+        EnemyDie?.Invoke();
+        Debug.Log("enemy đã chết");
+        if (isDead)return;
 
         isDead = true;
 
         if (FirePoint != null)
-            FirePoint.SetActive(false);
-
-        base.OnDie();
+        FirePoint.SetActive(false);
 
         EnemyWaveMember waveMember = GetComponent<EnemyWaveMember>();
 

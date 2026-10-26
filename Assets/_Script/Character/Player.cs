@@ -2,16 +2,22 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
-public class Player : MonoBehaviour, IDamageable, ITeamMember
+public class Player : AbsCharacter, IDamageable, ITeamMember
 {
     [Header("Health")]
     [SerializeField] private float initialHp = 100f;
     public TeamType Team => TeamType.Player;
+    
     [Header("Settings")]
+    [SerializeField] private HealthBar healthBar;
     [SerializeField] private Transform weaponHolder;
     private bool hasGun = false;
     private IEquipable loodGun;
     public static event Action PlayerDie;
+    void Awake()
+    {
+        Hp = initialHp;
+    }
     private void OnTriggerEnter2D(Collider2D other)
     {
         if(other.GetComponent<IEquipable>() != null && !hasGun)
@@ -22,7 +28,23 @@ public class Player : MonoBehaviour, IDamageable, ITeamMember
             loodGun.Equip(weaponHolder);
         }
     }
+    void Start()
+    {
+        // Hiển thị thanh máu đầy khi bắt đầu game
+        if (healthBar != null)
+        {
+            healthBar.UpdateHealthBar(Hp, initialHp);
+        }
+    }
+    protected override void Attack()
+    {
+        Debug.Log("Player đang tấn công");
+    }
 
+    protected override void NoAttack()
+    {
+        Debug.Log("player đang di chuyển đến Player");
+    }
     private void Update()
     {
         if (Input.GetKey(KeyCode.R) && hasGun)
@@ -35,16 +57,31 @@ public class Player : MonoBehaviour, IDamageable, ITeamMember
 
     public void TakeDamage(float damage)
     {
-        initialHp -= damage;
-        Debug.Log(initialHp);
-        if (initialHp <= 0)
+        if (Hp <= 0f) return;
+
+        // Trừ máu hiện tại, không trừ máu tối đa
+        Hp -= damage;
+        Hp = Mathf.Clamp(Hp, 0f, initialHp);
+
+        Debug.Log("Player HP: " + Hp);
+
+        // Cập nhật thanh máu
+        if (healthBar != null)
         {
-            initialHp = 0;
+            healthBar.UpdateHealthBar(Hp, initialHp);
+        }
+        else
+        {
+            Debug.LogError("Chưa gán HealthBar trong Inspector!");
+        }
+
+        if (Hp <= 0f)
+        {
             Debug.Log("Player đã chết");
-            this.OnDie();
+            OnDie();
         }
     }
-    private void OnDie()
+    protected override void OnDie()
     {
         PlayerDie?.Invoke();
         Debug.Log("player thông báo đã chếtok");
