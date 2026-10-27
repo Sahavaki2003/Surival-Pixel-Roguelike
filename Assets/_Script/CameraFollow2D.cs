@@ -13,7 +13,7 @@ public class CameraFollow2D : MonoBehaviour
     private Vector3 currentVelocity;
     private void LateUpdate()
     {
-        if (target != null) return;
+        if (target == null) return;
 
         Vector3 targetPosition = new Vector3( target.position.x + offset.x, target.position.y + offset.y, transform.position.z);
 
