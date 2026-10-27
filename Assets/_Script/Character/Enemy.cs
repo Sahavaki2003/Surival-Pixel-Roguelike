@@ -128,6 +128,6 @@ public class Enemy : AbsCharacter, IDamageable, ITeamMember
             waveMember.ReportDeath();
         }
 
-        Destroy(gameObject, 2f);
+        Destroy(gameObject);
     }
 }
