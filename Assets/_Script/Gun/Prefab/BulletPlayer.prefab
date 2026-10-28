@@ -27,7 +27,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2313829706123507727}
@@ -73,7 +73,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 5fe1260bb32b0bd489aa6b609b1a2a57, type: 2}
+  m_Sprite: {fileID: 21300000, guid: 92f045db206b20d4e888b84ab41c6eeb, type: 2}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -93,11 +93,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2313829706123507727}
-  - component: {fileID: 6949503566178513764}
+  - component: {fileID: 4516533060749834664}
   - component: {fileID: 9040941362782205440}
-  - component: {fileID: 6926696205488664947}
+  - component: {fileID: 2825648688673158228}
   m_Layer: 0
-  m_Name: BulletPistol
+  m_Name: BulletPlayer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -119,7 +119,7 @@ Transform:
   - {fileID: 4452187218790394536}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &6949503566178513764
+--- !u!114 &4516533060749834664
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -128,11 +128,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 3350920806404617378}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: deb3ccbd48338254ebe28f8a86cc80bb, type: 3}
+  m_Script: {fileID: 11500000, guid: 96de04e5713ff424ebd8d24d132e928f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ownerTeam: 1
-  data: {fileID: 11400000, guid: 37cd922cfa9ec664eae8b7e4a74d4200, type: 2}
+  ownerTeam: 0
+  data: {fileID: 11400000, guid: e69a2699821a14c4dac639205895b493, type: 2}
 --- !u!50 &9040941362782205440
 Rigidbody2D:
   serializedVersion: 4
@@ -160,7 +160,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 0
---- !u!58 &6926696205488664947
+--- !u!58 &2825648688673158228
 CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -192,6 +192,6 @@ CircleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.005717993, y: 0}
+  m_Offset: {x: 0.015373841, y: 0}
   serializedVersion: 2
-  m_Radius: 0.23887664
+  m_Radius: 0.22839342

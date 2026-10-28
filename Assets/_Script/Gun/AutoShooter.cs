@@ -2,18 +2,18 @@
 using System.Collections;
 using UnityEngine;
 
-public class AutoShooter : MonoBehaviour
+public abstract class AbsAutoShooter : MonoBehaviour
 {
     [Header("Bullet Settings")]
     [SerializeField] private GameObject bulletPrefab;
-    [SerializeField] private Transform firePoint;
+    [SerializeField] protected Transform firePoint;
 
-    [SerializeField] private float fireRate = 0.5f;
-    [SerializeField] private float bulletSpeed = 10f;
+    protected float fireRate;
+    protected float bulletSpeed;
 
     private Coroutine shootingCoroutine;
 
-    private void OnEnable()
+    protected virtual void OnEnable()
     {
         shootingCoroutine = StartCoroutine(ShootRoutine());
     }
@@ -36,22 +36,12 @@ public class AutoShooter : MonoBehaviour
         }
     }
 
-    private void SpawnBullet()
+    protected virtual GameObject SpawnBullet()
     {
         if (bulletPrefab == null || firePoint == null)
-            return;
+            return null;
 
-        GameObject bullet = Instantiate(
-            bulletPrefab,
-            firePoint.position,
-            firePoint.rotation
-        );
-
-        Rigidbody2D bulletRb = bullet.GetComponent<Rigidbody2D>();
-
-        if (bulletRb != null)
-        {
-            bulletRb.velocity = firePoint.right * bulletSpeed;
-        }
+        GameObject bullet = Instantiate(bulletPrefab,firePoint.position,firePoint.rotation);
+        return bullet;
     }
 }

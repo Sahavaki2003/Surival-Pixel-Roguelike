@@ -294,7 +294,7 @@ MonoBehaviour:
   healthBar: {fileID: 5355497990287072749}
   FirePoint: {fileID: 5114660251581233525}
   Target: {fileID: 0}
-  actionDistance: 2
+  actionDistance: 5
 --- !u!114 &8806223545280897133
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -309,7 +309,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Target: {fileID: 0}
   agent: {fileID: 8904395674136405517}
-  actionDistance: 2
+  actionDistance: 5
 --- !u!1 &4523868783475199778
 GameObject:
   m_ObjectHideFlags: 0
@@ -351,7 +351,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6574532095691413069}
-  - component: {fileID: 116814269429842978}
+  - component: {fileID: 426602837978417538}
   m_Layer: 0
   m_Name: FirePoint
   m_TagString: Untagged
@@ -368,13 +368,13 @@ Transform:
   m_GameObject: {fileID: 5114660251581233525}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.57, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8987313801719183439}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &116814269429842978
+--- !u!114 &426602837978417538
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -383,13 +383,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 5114660251581233525}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d2ba9fa6be0148a45a5b3cb126181696, type: 3}
+  m_Script: {fileID: 11500000, guid: dc72442ad5482f14a8c36a43b480ee81, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   bulletPrefab: {fileID: 3350920806404617378, guid: a1f945587c5420f44823bc516e81abde, type: 3}
   firePoint: {fileID: 6574532095691413069}
-  fireRate: 0.5
-  bulletSpeed: 10
+  target: {fileID: 0}
+  fireRateEnemy: 1
+  bulletSpeedEnemy: 5
 --- !u!1 &6005104931813023075
 GameObject:
   m_ObjectHideFlags: 0

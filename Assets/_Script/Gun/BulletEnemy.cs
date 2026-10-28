@@ -1,8 +1,8 @@
 using System;
 using UnityEngine;
 
-public class BulletShotgun : AbsWeapon
-{    
+public class BulletEnemy : AbsWeapon
+{
     [SerializeField] private TeamType ownerTeam;
     [SerializeField] private WeaponData data;
     void Awake()
