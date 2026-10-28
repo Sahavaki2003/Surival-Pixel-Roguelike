@@ -93,9 +93,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2313829706123507727}
+  - component: {fileID: 4516533060749834664}
   - component: {fileID: 9040941362782205440}
   - component: {fileID: 2825648688673158228}
-  - component: {fileID: 4516533060749834664}
   m_Layer: 0
   m_Name: BulletShoot
   m_TagString: Untagged
@@ -119,6 +119,20 @@ Transform:
   - {fileID: 4452187218790394536}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4516533060749834664
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3350920806404617378}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 96de04e5713ff424ebd8d24d132e928f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ownerTeam: 0
+  data: {fileID: 11400000, guid: e69a2699821a14c4dac639205895b493, type: 2}
 --- !u!50 &9040941362782205440
 Rigidbody2D:
   serializedVersion: 4
@@ -181,17 +195,3 @@ CircleCollider2D:
   m_Offset: {x: 0.015373841, y: 0}
   serializedVersion: 2
   m_Radius: 0.22839342
---- !u!114 &4516533060749834664
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3350920806404617378}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 96de04e5713ff424ebd8d24d132e928f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ownerTeam: 0
-  data: {fileID: 11400000, guid: e69a2699821a14c4dac639205895b493, type: 2}
