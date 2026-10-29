@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Shotgun
   m_EditorClassIdentifier: 
   weaponName: Shotgun
-  damage: 10
-  speedGun: 5
+  damage: 20
+  speedGun: 1
