@@ -30,6 +30,7 @@ public class NavMeshEnemy : MonoBehaviour
         this.GetDistance();
     }
 
+    //tính toán khoảng cách giữ player và enemy, nếu mà <= vào actionDistance thì dừng lại >= thì đi tiếp
     private void GetDistance()
     {
         if(Target == null) return;
@@ -44,7 +45,6 @@ public class NavMeshEnemy : MonoBehaviour
         }
         else if(distance > actionDistance)
         {
-
             agent.updatePosition = true;
             agent.SetDestination(Target.position);
         }

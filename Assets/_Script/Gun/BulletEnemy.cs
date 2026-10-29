@@ -9,17 +9,18 @@ public class BulletEnemy : AbsWeapon
     {
         this.Damage = data.Damage;
     }
+
+    //va chạm contriggerEnter từ viên đạn vào player và truyền Damage
     protected void OnTriggerEnter2D(Collider2D other)
     {
         ITeamMember targetTeam = other.GetComponentInParent<ITeamMember>();
 
         // Không tìm thấy đối tượng có phe
-        if (targetTeam == null)
-            return;
+        if (targetTeam == null) return;
 
         // Không gây sát thương lên cùng phe
-        if (targetTeam.Team == ownerTeam)
-            return;
+        if (targetTeam.Team == ownerTeam) return;
+
         if(other.GetComponent<IDamageable>() != null)
         {
             Debug.Log("Player hoặc enemy đã Va chạm");

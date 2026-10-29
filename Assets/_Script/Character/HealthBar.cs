@@ -5,9 +5,10 @@ public class HealthBar : MonoBehaviour
 {
     [SerializeField] private SpriteRenderer fillRenderer;
 
-    private float maxHp;
     private Vector3 originalScale;
     private Vector3 originalPosition;
+
+    //lưu lại kích thước originalScale và vị trí originalPosition ban đầu của thanh máu
     private void OnEnable()
     {
         originalScale = fillRenderer.transform.localScale;

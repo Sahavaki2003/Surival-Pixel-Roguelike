@@ -135,12 +135,10 @@ public class EnemyWaveMember : MonoBehaviour
 
     public void ReportDeath()
     {
-        if (hasReportedDeath)
-            return;
+        if (hasReportedDeath) return;
 
         hasReportedDeath = true;
 
-        if (spawner != null)
-            spawner.OnEnemyDied();
+        if (spawner != null) spawner.OnEnemyDied();
     }
 }

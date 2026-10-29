@@ -15,6 +15,11 @@ public class AutoShooterPlayer : AbsAutoShooter
     }
     protected override void OnEnable()
     {
+        this.IntanceGameobj();
+        base.OnEnable();
+    }
+    private void IntanceGameobj()
+    {
         GameObject player = GameObject.Find("Enemy");
 
         if (player != null)
@@ -25,7 +30,6 @@ public class AutoShooterPlayer : AbsAutoShooter
         {
             Debug.LogWarning("Không tìm thấy GameObject Enemy!");
         }
-        base.OnEnable();
     }
     protected override GameObject SpawnBullet()
     {

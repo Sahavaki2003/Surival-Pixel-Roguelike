@@ -16,6 +16,12 @@ public class AutoShooterEnemy : AbsAutoShooter
     }
     protected override void OnEnable()
     {
+        this.IntanceGameobj();
+        base.OnEnable();
+    }
+    //1 nghiệm vụ chỉ intancegameobj
+    private void IntanceGameobj()
+    {
         GameObject player = GameObject.Find("Player");
 
         if (player != null)
@@ -26,8 +32,8 @@ public class AutoShooterEnemy : AbsAutoShooter
         {
             Debug.LogWarning("Không tìm thấy GameObject Player!");
         }
-        base.OnEnable();
     }
+    //tính toán vector di chuyển cho viên đạn. rồi nhân với speed để viên đạn bay
     protected override GameObject SpawnBullet()
     {
         GameObject bullet = base.SpawnBullet();
@@ -39,8 +45,7 @@ public class AutoShooterEnemy : AbsAutoShooter
 
         if (bulletRb != null)
         {
-            Vector2 direction =
-                (target.position - firePoint.position).normalized;
+            Vector2 direction = (target.position - firePoint.position).normalized;
 
             bulletRb.velocity = direction * bulletSpeed;
         }

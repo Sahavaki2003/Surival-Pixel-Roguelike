@@ -10,6 +10,9 @@ public class LoodGun : MonoBehaviour, IEquipable
     {
         this.rb = GetComponent<Rigidbody2D>();
     }
+
+    //Nhặt súng thì sẽ bật FirePoint sẽ auto tự bắn, tiếp theo sét vị trí của súng đã nhặt vào vị trí weaponHolder rồi setup về 
+    //vị trí và góc quay và tắt rb
     public void Equip(Transform weaponHolder)
     {   
         FirePoint.SetActive(true);
@@ -22,6 +25,7 @@ public class LoodGun : MonoBehaviour, IEquipable
         Debug.Log(rb.simulated + "đã tắt rigibody");
     }
 
+    // tháo súng sẽ tắt bắn và set vị trí thành rỗng và tắt rb
     public void Unequip()
     {
         FirePoint.SetActive(false);

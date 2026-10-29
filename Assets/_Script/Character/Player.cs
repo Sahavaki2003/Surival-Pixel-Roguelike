@@ -55,6 +55,7 @@ public class Player : AbsCharacter, IDamageable, ITeamMember
         }
     }
 
+    //Tính toán trừ máu và cập nhật thanh máu khi bị trừ
     public void TakeDamage(float damage)
     {
         if (Hp <= 0f) return;

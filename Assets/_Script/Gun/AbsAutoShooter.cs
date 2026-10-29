@@ -27,7 +27,7 @@ public abstract class AbsAutoShooter : MonoBehaviour
         }
     }
 
-    private IEnumerator ShootRoutine()
+    private IEnumerator ShootRoutine()//spawn theo thoi gian
     {
         while (true)
         {
@@ -36,7 +36,7 @@ public abstract class AbsAutoShooter : MonoBehaviour
         }
     }
 
-    protected virtual GameObject SpawnBullet()
+    protected virtual GameObject SpawnBullet()//tạo bullet 
     {
         if (bulletPrefab == null || firePoint == null)
             return null;

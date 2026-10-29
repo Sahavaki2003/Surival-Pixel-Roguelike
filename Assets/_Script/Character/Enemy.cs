@@ -41,12 +41,12 @@ public class Enemy : AbsCharacter, IDamageable, ITeamMember
 
     private void Update()
     {
-        if (Target == null || isDead)
-            return;
+        if (Target == null || isDead) return;
 
         GetDistance();
     }
 
+    //tính toán khoảng cách để enemy tấn công player
     private void GetDistance()
     {
         float distance = Vector2.Distance(transform.position,Target.position);
@@ -54,8 +54,7 @@ public class Enemy : AbsCharacter, IDamageable, ITeamMember
         bool shouldAttack = distance <= actionDistance;
 
         // Chỉ xử lý khi trạng thái thay đổi
-        if (shouldAttack == isAttacking)
-            return;
+        if (shouldAttack == isAttacking) return;
 
         isAttacking = shouldAttack;
 
@@ -69,7 +68,7 @@ public class Enemy : AbsCharacter, IDamageable, ITeamMember
         }
     }
 
-    protected override void Attack()
+    protected override void Attack()// tấn công
     {
         if (FirePoint != null)
             FirePoint.SetActive(true);
@@ -77,7 +76,7 @@ public class Enemy : AbsCharacter, IDamageable, ITeamMember
         Debug.Log("Enemy đang tấn công");
     }
 
-    protected override void NoAttack()
+    protected override void NoAttack()// không tấn công
     {
         if (FirePoint != null)
             FirePoint.SetActive(false);
