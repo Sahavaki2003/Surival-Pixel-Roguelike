@@ -6,7 +6,7 @@ public class AutoShooterPlayer : AbsAutoShooter
 {
     [SerializeField] private Transform target;
     [SerializeField] private float fireRatePlayer = 1f;
-    [SerializeField] private float bulletSpeedPlayer = 5f;
+    [SerializeField] private float bulletSpeedPlayer = 7f;
 
     void Awake()
     {

@@ -7,12 +7,18 @@ public class JoystickPlayerExample : MonoBehaviour
 
     [Header("Character Visual")]
     [SerializeField] private Transform characterVisual;
+    [SerializeField] private Animator animator;
+    private static readonly int IsRunningHash = Animator.StringToHash("IsRunning");
 
     private void Update()
     {
         Vector3 direction = new Vector3(variableJoystick.Horizontal,variableJoystick.Vertical,0f);
 
         transform.position += direction.normalized * speed * Time.deltaTime;
+        
+        float moveSpeed = direction.magnitude;
+
+        animator.SetBool(IsRunningHash, moveSpeed > 0.1f);
         // Xoay mặt nhân vật theo trái/phải của joystick
         if (variableJoystick.Horizontal > 0.1f)
         {
